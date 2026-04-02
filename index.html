@@ -3,182 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SpaceX Style Site</title>
+<title>SpaceX Style</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, Arial;
-        background: #000;
-        color: #fff;
-        overflow-x: hidden;
-    }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
 
-    section {
-        width: 100%;
-        min-height: 100vh;
-    }
+/* NAV */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+}
 
-    /* NAVBAR */
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-        background: rgba(0,0,0,0.6);
-        backdrop-filter: blur(10px);
-        z-index: 10;
-    }
+.menu-btn { cursor: pointer; }
+.logo { cursor: pointer; font-weight: bold; letter-spacing: 2px; }
 
-    .menu-btn {
-        background: white;
-        color: black;
-        padding: 8px 14px;
-        border-radius: 20px;
-        cursor: pointer;
-    }
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: rgba(10,10,10,0.95);
+    padding: 25px;
+    transition: 0.4s;
+    z-index: 200;
+}
 
-    .logo {
-        margin-left: 20px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        cursor: pointer;
-    }
+.sidebar.active { left: 0; }
 
-    /* HERO */
-    .hero {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        background: radial-gradient(circle at top, #111, #000);
-    }
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 18px 0;
+}
 
-    .hero h2 {
-        font-size: 70px;
-        letter-spacing: 3px;
-    }
+.close {
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: #aaa;
+}
 
-    /* SIDEBAR */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -300px;
-        width: 300px;
-        height: 100%;
-        background: rgba(15,15,15,0.95);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        transition: 0.4s;
-        z-index: 20;
-    }
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+}
 
-    .sidebar.active {
-        left: 0;
-    }
+.hero-left {
+    max-width: 520px;
+}
 
-    .close-btn {
-        cursor: pointer;
-        color: #aaa;
-        margin-bottom: 20px;
-        display: inline-block;
-    }
+.hero-left h1 {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
 
-    .sidebar a {
-        display: block;
-        color: white;
-        text-decoration: none;
-        margin: 20px 0;
-        font-size: 18px;
-    }
+.hero-left p {
+    color: #aaa;
+    line-height: 1.6;
+}
 
-    /* CONTENT */
-    .content {
-        max-width: 1100px;
-        margin: 80px auto;
-        padding: 20px;
-    }
+.hero-right img {
+    width: 420px;
+    border-radius: 12px;
+}
 
-    .card {
-        background: rgba(255,255,255,0.05);
-        border-radius: 20px;
-        padding: 25px;
-        margin-bottom: 20px;
-        backdrop-filter: blur(10px);
-    }
+/* VIDEO BACKGROUND SECTION */
+.video-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
 
-    .video {
-        width: 100%;
-        height: 300px;
-        background: #111;
-        border-radius: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #777;
-    }
+/* background video */
+.video-section video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+}
 
+/* overlays for blending */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.4),
+        rgba(0,0,0,0.7)
+    );
+}
+
+/* text over video */
+.video-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.video-content h2 {
+    font-size: 48px;
+    max-width: 600px;
+}
+
+.video-content p {
+    margin-top: 20px;
+    color: #aaa;
+    max-width: 600px;
+}
+
+/* NEXT SECTION */
+.section {
+    padding: 120px 8%;
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    color: #aaa;
+    max-width: 800px;
+    line-height: 1.6;
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+<!-- NAV -->
+<div class="nav">
     <div class="menu-btn" onclick="toggleMenu()">Menu</div>
-    <div class="logo" onclick="reloadSite()">SPACEX</div>
+    <div class="logo" onclick="reloadSite()">SpaceX</div>
 </div>
 
 <!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
-    <div class="close-btn" onclick="toggleMenu()">✕ Close</div>
-
+    <div class="close" onclick="toggleMenu()">✕ Close</div>
     <a href="#">Home</a>
+    <a href="#">Vehicles</a>
     <a href="#">Missions</a>
     <a href="#">Launches</a>
-    <a href="#">Contact</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-    <h2>SpaceX</h2>
-</div>
-
-<!-- CONTENT -->
-<div class="content">
-
-    <div class="card">
-        <h2>About SpaceX</h2>
+    <div class="hero-left">
+        <h1>Making Life Multiplanetary</h1>
         <p>
-            SpaceX designs, manufactures and launches advanced rockets and spacecraft.
-            The company is focused on enabling human life on Mars.
+            SpaceX designs and launches advanced rockets and spacecraft with the goal of expanding humanity beyond Earth.
         </p>
     </div>
 
-    <div class="card">
-        <h2>Video</h2>
-        <div class="video">
-            Video placeholder
+    <div class="hero-right">
+        <img src="https://i.pinimg.com/originals/57/d0/4e/57d04ec2fb7c183adfe167887718bede.gif">
+    </div>
+</div>
+
+<!-- VIDEO BACKGROUND SECTION -->
+<div class="video-section">
+
+    <video autoplay muted loop playsinline>
+        <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <div class="video-content">
+        <div>
+            <h2>Mission Control</h2>
+            <p>
+                Launch operations, orbital deployment, and deep space exploration — all powered by reusable rocket technology.
+            </p>
         </div>
     </div>
 
-    <div class="card">
-        <h2>Mission</h2>
-        <p>
-            Making space travel more accessible and reusable through innovation and engineering.
-        </p>
-    </div>
+</div>
 
+<!-- NEXT SECTION -->
+<div class="section">
+    <h2>Future Vision</h2>
+    <p>
+        Developing Starship and next-generation systems to enable long-term human presence on Mars and beyond.
+    </p>
 </div>
 
 <script>

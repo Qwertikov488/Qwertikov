@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Apple Style</title>
+    <title>SpaceX Apple Style</title>
 
     <style>
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, Arial;
-            background: #111;
-            overflow: hidden;
+            background: #000;
+            overflow-x: hidden;
         }
 
         .screen {
@@ -20,7 +20,7 @@
             transition: 0.6s;
         }
 
-        /* ===== ЭКРАН 1 ===== */
+        /* ===== SCREEN 1 ===== */
         #screen1 {
             display: flex;
             justify-content: center;
@@ -37,10 +37,10 @@
             background-position: center;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
         }
 
         .overlay {
@@ -60,51 +60,59 @@
         button {
             margin-top: 20px;
             padding: 12px 25px;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
             border-radius: 30px;
             background: white;
             cursor: pointer;
         }
 
-        /* ===== ЭКРАН 2 ===== */
+        /* ===== SCREEN 2 ===== */
         #screen2 {
-            background: #000;
             transform: translateX(100%);
-            padding: 0;
-            box-sizing: border-box;
+            background: radial-gradient(circle at top, #0a0a0a, #000);
             color: white;
         }
 
         /* HERO */
         .hero {
             width: 100%;
-            height: 100vh;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-inner {
+            width: 90%;
+            max-width: 1100px;
+            height: 100%;
             background-image: url('https://i.pinimg.com/736x/77/42/cb/7742cbbfe0070484d1dd981ad54ab3a8.jpg');
             background-size: cover;
             background-position: center;
+            border-radius: 25px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
         }
 
-        .hero::after {
+        .hero-inner::after {
             content: "";
             position: absolute;
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
-            top: 0;
-            left: 0;
+            border-radius: 25px;
         }
 
-        .hero h2 {
+        .hero-title {
             position: relative;
-            font-size: 60px;
+            font-size: 64px;
             z-index: 1;
-            margin: 0;
+            letter-spacing: 2px;
         }
 
         /* MENU BUTTON */
@@ -112,8 +120,8 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            z-index: 2;
-            background: white;
+            z-index: 5;
+            background: rgba(255,255,255,0.9);
             color: black;
             padding: 10px 15px;
             border-radius: 20px;
@@ -124,13 +132,14 @@
         .sidebar {
             position: fixed;
             top: 0;
-            left: -250px;
-            width: 250px;
+            left: -260px;
+            width: 260px;
             height: 100%;
-            background: #111;
+            background: rgba(20,20,20,0.95);
+            backdrop-filter: blur(10px);
             padding: 20px;
             transition: 0.4s;
-            z-index: 3;
+            z-index: 10;
         }
 
         .sidebar.active {
@@ -145,12 +154,49 @@
             font-size: 18px;
         }
 
+        .close-btn {
+            margin-bottom: 20px;
+            display: inline-block;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        /* CONTENT */
+        .content {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .video-box {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+        }
+
     </style>
 </head>
 
 <body>
 
-<!-- ЭКРАН 1 -->
+<!-- SCREEN 1 -->
 <div id="screen1" class="screen">
 
     <div class="image-box">
@@ -162,23 +208,51 @@
 
 </div>
 
-<!-- ЭКРАН 2 -->
+<!-- SCREEN 2 -->
 <div id="screen2" class="screen">
 
-    <!-- кнопка меню -->
-    <div class="menu-btn" onclick="toggleMenu()">Меню</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰ Меню</div>
 
-    <!-- sidebar -->
     <div id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">✕ Закрыть</div>
         <a href="#">Главная</a>
-        <a href="#">Проекты</a>
-        <a href="#">Новости</a>
-        <a href="#">Контакты</a>
+        <a href="#">SpaceX</a>
+        <a href="#">Космос</a>
+        <a href="#">Видео</a>
     </div>
 
-    <!-- главный экран -->
+    <!-- HERO -->
     <div class="hero">
-        <h2>SpaceX</h2>
+        <div class="hero-inner">
+            <div class="hero-title">SpaceX</div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="section">
+            <h2>О проекте</h2>
+            <p>
+                SpaceX — компания, занимающаяся разработкой ракет и космических технологий.
+                Здесь может быть твой текст или описание проекта.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Видео</h2>
+            <div class="video-box">
+                Вставь сюда видео (YouTube / iframe)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Дополнительный блок</h2>
+            <p>
+                Этот блок можно использовать для новостей, характеристик или любых данных.
+            </p>
+        </div>
+
     </div>
 
 </div>

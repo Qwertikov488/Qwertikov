@@ -5,16 +5,12 @@
     <style>
         body {
             background: black;
-            color: violet;
+            color: white;
             text-align: center;
             font-family: Arial;
         }
-        h1 {
-            font-size: 50px;
-        }
+
         button {
-            background: violet;
-            border: none;
             padding: 10px 20px;
             font-size: 20px;
             cursor: pointer;
@@ -23,12 +19,27 @@
 </head>
 <body>
 
-<h1>🔥 Мой первый сайт 🔥</h1>
-<p>Я сделал это сам 😎</p>
+<!-- ПЕРВЫЙ ЭКРАН -->
+<div id="screen1">
+    <h1>Добро пожаловать 👋</h1>
+    <p>Хотите перейти на основной сайт?</p>
+    <button onclick="goNext()">Да</button>
+</div>
 
-<button onclick="alert('Ты нажал кнопку 😈')">
-    Нажми меня
-</button>
+<!-- ВТОРОЙ ЭКРАН -->
+<div id="screen2" style="display:none;">
+    <h1>Илон Маск 🚀</h1>
+    <p>Илон Маск — предприниматель и инженер.</p>
+    <p>Он основал компанию SpaceX.</p>
+    <p>SpaceX делает ракеты и запускает их в космос.</p>
+</div>
+
+<script>
+function goNext() {
+    document.getElementById("screen1").style.display = "none";
+    document.getElementById("screen2").style.display = "block";
+}
+</script>
 
 </body>
 </html>

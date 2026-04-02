@@ -1,266 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>SpaceX Apple Style</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Arial;
-            background: #000;
-            overflow-x: hidden;
-        }
+<title>SpaceX Style Site</title>
 
-        .screen {
-            width: 100%;
-            height: 100vh;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: 0.6s;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        /* ===== SCREEN 1 ===== */
-        #screen1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, Arial;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+    }
 
-        .image-box {
-            width: 80%;
-            max-width: 900px;
-            height: 500px;
-            background-image: url('https://i.pinimg.com/1200x/39/06/69/3906691596a7fd6daa6ed75a98669338.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    /* ===== GENERAL LAYOUT ===== */
+    section {
+        width: 100%;
+        min-height: 100vh;
+    }
 
-        .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-        }
+    /* ===== SCREEN 1 ===== */
+    #screen1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
-        h1 {
-            color: white;
-            z-index: 1;
-            font-size: 40px;
-        }
+    .image-box {
+        width: 80%;
+        max-width: 900px;
+        height: 500px;
+        background-image: url('https://i.pinimg.com/1200x/39/06/69/3906691596a7fd6daa6ed75a98669338.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 12px 25px;
-            font-size: 16px;
-            border: none;
-            border-radius: 30px;
-            background: white;
-            cursor: pointer;
-        }
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        border-radius: 20px;
+    }
 
-        /* ===== SCREEN 2 ===== */
-        #screen2 {
-            transform: translateX(100%);
-            background: radial-gradient(circle at top, #0a0a0a, #000);
-            color: white;
-        }
+    h1 {
+        z-index: 1;
+        font-size: 40px;
+    }
 
-        /* HERO */
-        .hero {
-            width: 100%;
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        background: white;
+        cursor: pointer;
+    }
 
-        .hero-inner {
-            width: 90%;
-            max-width: 1100px;
-            height: 100%;
-            background-image: url('https://i.pinimg.com/736x/77/42/cb/7742cbbfe0070484d1dd981ad54ab3a8.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 25px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
-        }
+    /* ===== SCREEN 2 ===== */
+    #screen2 {
+        background: #000;
+    }
 
-        .hero-inner::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            border-radius: 25px;
-        }
+    /* NAVBAR */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(10px);
+        z-index: 10;
+    }
 
-        .hero-title {
-            position: relative;
-            font-size: 64px;
-            z-index: 1;
-            letter-spacing: 2px;
-        }
+    .logo {
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
 
-        /* MENU BUTTON */
-        .menu-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 5;
-            background: rgba(255,255,255,0.9);
-            color: black;
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+    .menu-btn {
+        background: white;
+        color: black;
+        padding: 8px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
 
-        /* SIDEBAR */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -260px;
-            width: 260px;
-            height: 100%;
-            background: rgba(20,20,20,0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            transition: 0.4s;
-            z-index: 10;
-        }
+    /* HERO */
+    .hero {
+        height: 100vh;
+        background-image: url('https://i.pinimg.com/736x/77/42/cb/7742cbbfe0070484d1dd981ad54ab3a8.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
 
-        .sidebar.active {
-            left: 0;
-        }
+    .hero::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+    }
 
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            margin: 15px 0;
-            font-size: 18px;
-        }
+    .hero h2 {
+        position: relative;
+        font-size: 70px;
+        letter-spacing: 3px;
+    }
 
-        .close-btn {
-            margin-bottom: 20px;
-            display: inline-block;
-            cursor: pointer;
-            color: #aaa;
-        }
+    /* SIDEBAR */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100%;
+        background: rgba(15,15,15,0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        transition: 0.4s;
+        z-index: 20;
+    }
 
-        /* CONTENT */
-        .content {
-            width: 90%;
-            max-width: 1100px;
-            margin: 40px auto;
-        }
+    .sidebar.active {
+        left: 0;
+    }
 
-        .section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-        }
+    .sidebar a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin: 20px 0;
+        font-size: 18px;
+    }
 
-        .section h2 {
-            margin-top: 0;
-        }
+    .close-btn {
+        cursor: pointer;
+        margin-bottom: 20px;
+        color: #aaa;
+    }
 
-        .video-box {
-            width: 100%;
-            height: 300px;
-            border-radius: 15px;
-            background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #888;
-        }
+    /* CONTENT */
+    .content {
+        max-width: 1100px;
+        margin: 80px auto;
+        padding: 20px;
+    }
 
-    </style>
+    .card {
+        background: rgba(255,255,255,0.05);
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 20px;
+        backdrop-filter: blur(10px);
+    }
+
+    .video {
+        width: 100%;
+        height: 300px;
+        background: #111;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #777;
+    }
+
+</style>
 </head>
 
 <body>
 
 <!-- SCREEN 1 -->
-<div id="screen1" class="screen">
-
+<section id="screen1">
     <div class="image-box">
         <div class="overlay"></div>
-        <h1>Добро пожаловать</h1>
+        <h1>Welcome</h1>
     </div>
-
-    <button onclick="next()">Перейти</button>
-
-</div>
+    <button onclick="goToSite()">Enter</button>
+</section>
 
 <!-- SCREEN 2 -->
-<div id="screen2" class="screen">
+<section id="screen2">
 
-    <div class="menu-btn" onclick="toggleMenu()">☰ Меню</div>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">SPACEX</div>
+        <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+    </div>
 
+    <!-- SIDEBAR -->
     <div id="sidebar" class="sidebar">
-        <div class="close-btn" onclick="toggleMenu()">✕ Закрыть</div>
-        <a href="#">Главная</a>
-        <a href="#">SpaceX</a>
-        <a href="#">Космос</a>
-        <a href="#">Видео</a>
+        <div class="close-btn" onclick="toggleMenu()">✕ Close</div>
+        <a href="#">Home</a>
+        <a href="#">Missions</a>
+        <a href="#">Launches</a>
+        <a href="#">Contact</a>
     </div>
 
     <!-- HERO -->
     <div class="hero">
-        <div class="hero-inner">
-            <div class="hero-title">SpaceX</div>
-        </div>
+        <h2>SpaceX</h2>
     </div>
 
     <!-- CONTENT -->
     <div class="content">
 
-        <div class="section">
-            <h2>О проекте</h2>
+        <div class="card">
+            <h2>About SpaceX</h2>
             <p>
-                SpaceX — компания, занимающаяся разработкой ракет и космических технологий.
-                Здесь может быть твой текст или описание проекта.
+                SpaceX designs, manufactures and launches advanced rockets and spacecraft.
+                The company is focused on enabling human life on Mars.
             </p>
         </div>
 
-        <div class="section">
-            <h2>Видео</h2>
-            <div class="video-box">
-                Вставь сюда видео (YouTube / iframe)
+        <div class="card">
+            <h2>Video</h2>
+            <div class="video">
+                Video placeholder (embed YouTube here)
             </div>
         </div>
 
-        <div class="section">
-            <h2>Дополнительный блок</h2>
+        <div class="card">
+            <h2>Mission</h2>
             <p>
-                Этот блок можно использовать для новостей, характеристик или любых данных.
+                Making space travel more accessible and reusable through innovation and engineering.
             </p>
         </div>
 
     </div>
 
-</div>
+</section>
 
 <script>
-function next() {
-    document.getElementById("screen1").style.transform = "translateX(-100%)";
-    document.getElementById("screen2").style.transform = "translateX(0)";
+function goToSite() {
+    document.getElementById("screen1").style.display = "none";
+    document.getElementById("screen2").scrollIntoView({ behavior: "smooth" });
 }
 
 function toggleMenu() {

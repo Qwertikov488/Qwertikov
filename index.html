@@ -20,7 +20,6 @@
         overflow-x: hidden;
     }
 
-    /* ===== GENERAL LAYOUT ===== */
     section {
         width: 100%;
         min-height: 100vh;
@@ -148,18 +147,35 @@
         left: 0;
     }
 
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .menu-title {
+        font-size: 18px;
+        color: #aaa;
+    }
+
+    .spacex-title {
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close-btn {
+        cursor: pointer;
+        color: #aaa;
+    }
+
     .sidebar a {
         display: block;
         color: white;
         text-decoration: none;
         margin: 20px 0;
         font-size: 18px;
-    }
-
-    .close-btn {
-        cursor: pointer;
-        margin-bottom: 20px;
-        color: #aaa;
     }
 
     /* CONTENT */
@@ -213,7 +229,12 @@
 
     <!-- SIDEBAR -->
     <div id="sidebar" class="sidebar">
-        <div class="close-btn" onclick="toggleMenu()">✕ Close</div>
+        <div class="sidebar-header">
+            <span class="menu-title">Menu</span>
+            <span class="spacex-title" onclick="reloadSite()">SpaceX</span>
+            <span class="close-btn" onclick="toggleMenu()">✕</span>
+        </div>
+
         <a href="#">Home</a>
         <a href="#">Missions</a>
         <a href="#">Launches</a>
@@ -262,6 +283,10 @@ function goToSite() {
 
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
+}
+
+function reloadSite() {
+    location.reload();
 }
 </script>
 

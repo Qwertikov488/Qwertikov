@@ -82,17 +82,11 @@
         width: 100%;
         height: 70px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 0 30px;
+        padding: 0 20px;
         background: rgba(0,0,0,0.6);
         backdrop-filter: blur(10px);
         z-index: 10;
-    }
-
-    .logo {
-        font-weight: bold;
-        letter-spacing: 2px;
     }
 
     .menu-btn {
@@ -103,21 +97,28 @@
         cursor: pointer;
     }
 
-    .hero::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
+    .logo {
+        margin-left: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    /* HERO */
+    .hero {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background: radial-gradient(circle at top, #111, #000);
     }
 
     .hero h2 {
-        position: relative;
         font-size: 70px;
         letter-spacing: 3px;
     }
 
-    /* SIDEBAR */
+    /* SIDEBAR (LEFT) */
     .sidebar {
         position: fixed;
         top: 0;
@@ -135,27 +136,11 @@
         left: 0;
     }
 
-    .sidebar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-    }
-
-    .menu-title {
-        font-size: 18px;
-        color: #aaa;
-    }
-
-    .spacex-title {
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
     .close-btn {
         cursor: pointer;
         color: #aaa;
+        margin-bottom: 20px;
+        display: inline-block;
     }
 
     .sidebar a {
@@ -211,17 +196,13 @@
 
     <!-- NAVBAR -->
     <div class="navbar">
-        <div class="logo">SPACEX</div>
         <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+        <div class="logo">SPACEX</div>
     </div>
 
     <!-- SIDEBAR -->
     <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <span class="menu-title">Menu</span>
-            <span class="spacex-title" onclick="reloadSite()">SpaceX</span>
-            <span class="close-btn" onclick="toggleMenu()">✕</span>
-        </div>
+        <div class="close-btn" onclick="toggleMenu()">✕ Close</div>
 
         <a href="#">Home</a>
         <a href="#">Missions</a>
@@ -229,7 +210,7 @@
         <a href="#">Contact</a>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO (NO IMAGE FROM SCREEN 1 HERE) -->
     <div class="hero">
         <h2>SpaceX</h2>
     </div>
@@ -248,7 +229,7 @@
         <div class="card">
             <h2>Video</h2>
             <div class="video">
-                Video placeholder (embed YouTube here)
+                Video placeholder
             </div>
         </div>
 
@@ -271,10 +252,6 @@ function goToSite() {
 
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
-}
-
-function reloadSite() {
-    location.reload();
 }
 </script>
 

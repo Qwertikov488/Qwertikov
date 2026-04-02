@@ -1,43 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Мой сайт</title>
+    <title>Apple Style</title>
+
     <style>
         body {
-            background: black;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Arial;
+            overflow: hidden;
+        }
+
+        /* ОБЩИЙ СТИЛЬ ЭКРАНОВ */
+        .screen {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.6s;
+        }
+
+        /* ПЕРВЫЙ ЭКРАН */
+        #screen1 {
+            background-image: url('https://i.pinimg.com/1200x/39/06/69/3906691596a7fd6daa6ed75a98669338.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            font-family: Arial;
+        }
+
+        /* Затемнение */
+        #screen1::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        #screen1 h1, #screen1 button {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: black;
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        /* ВТОРОЙ ЭКРАН */
+        #screen2 {
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transform: translateX(100%);
+        }
+
+        .content {
+            max-width: 600px;
         }
     </style>
 </head>
+
 <body>
 
-<!-- ПЕРВЫЙ ЭКРАН -->
-<div id="screen1">
-    <h1>Добро пожаловать 👋</h1>
-    <p>Хотите перейти на основной сайт?</p>
-    <button onclick="goNext()">Да</button>
+<!-- ЭКРАН 1 -->
+<div id="screen1" class="screen">
+    <h1>Добро пожаловать</h1>
+    <button onclick="next()">Перейти</button>
 </div>
 
-<!-- ВТОРОЙ ЭКРАН -->
-<div id="screen2" style="display:none;">
-    <h1>Илон Маск 🚀</h1>
-    <p>Илон Маск — предприниматель и инженер.</p>
-    <p>Он основал компанию SpaceX.</p>
-    <p>SpaceX делает ракеты и запускает их в космос.</p>
+<!-- ЭКРАН 2 -->
+<div id="screen2" class="screen">
+    <div class="content">
+        <h1>Илон Маск 🚀</h1>
+        <p>Илон Маск — предприниматель и инженер.</p>
+        <p>Он основал SpaceX — компанию, создающую ракеты.</p>
+        <p>Его цель — сделать жизнь на других планетах реальной.</p>
+    </div>
 </div>
 
 <script>
-function goNext() {
-    document.getElementById("screen1").style.display = "none";
-    document.getElementById("screen2").style.display = "block";
+function next() {
+    document.getElementById("screen1").style.transform = "translateX(-100%)";
+    document.getElementById("screen2").style.transform = "translateX(0)";
 }
 </script>
 

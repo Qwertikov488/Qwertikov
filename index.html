@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SpaceX Style</title>
+<title>SpaceX Style Template</title>
 
 <style>
 * {
@@ -13,148 +13,95 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-    background: #000;
+    font-family: Arial, sans-serif;
     color: #fff;
-    overflow-x: hidden;
+    background: #000;
 }
 
 /* NAV */
-.nav {
+nav {
     position: fixed;
-    top: 0;
     width: 100%;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 100;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-}
-
-.menu-btn { cursor: pointer; }
-.logo { cursor: pointer; font-weight: bold; letter-spacing: 2px; }
-
-/* SIDEBAR */
-.sidebar {
-    position: fixed;
-    left: -280px;
     top: 0;
-    width: 280px;
-    height: 100%;
-    background: rgba(10,10,10,0.95);
-    padding: 25px;
-    transition: 0.4s;
-    z-index: 200;
-}
-
-.sidebar.active { left: 0; }
-
-.sidebar a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    margin: 18px 0;
-}
-
-.close {
-    cursor: pointer;
-    margin-bottom: 20px;
-    color: #aaa;
-}
-
-/* HERO */
-.hero {
-    height: 100vh;
+    padding: 20px 60px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 8%;
+    z-index: 1000;
 }
 
-.hero-left {
-    max-width: 520px;
+nav .logo {
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
 }
 
-.hero-left h1 {
-    font-size: 64px;
-    margin-bottom: 20px;
-}
-
-.hero-left p {
+nav .menu a {
+    margin-left: 30px;
+    text-decoration: none;
     color: #aaa;
-    line-height: 1.6;
+    transition: 0.3s;
 }
 
-/* Mars image bigger */
-.hero-right img {
-    width: 520px;
-    max-width: 45vw;
-    border-radius: 12px;
+nav .menu a:hover {
+    color: #fff;
 }
 
-/* VIDEO SECTION */
-.video-section {
-    position: relative;
+/* SECTION BASE */
+.section {
     height: 100vh;
-    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 80px;
 }
 
-.video-section video {
+/* BACKGROUND IMAGE */
+.bg {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
     z-index: 1;
 }
 
-.video-overlay {
+/* DARK OVERLAY */
+.overlay {
     position: absolute;
     inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
     z-index: 2;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.3),
-        rgba(0,0,0,0.85)
-    );
 }
 
-.video-content {
+/* CONTENT */
+.content {
     position: relative;
     z-index: 3;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 8%;
+    max-width: 500px;
 }
 
-.video-content h2 {
-    font-size: 48px;
+.content h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-.video-content p {
-    margin-top: 20px;
-    color: #aaa;
-    max-width: 600px;
-}
-
-/* FINAL SECTION */
-.section {
-    padding: 120px 8%;
-}
-
-.section h2 {
-    font-size: 36px;
+.content p {
+    color: #ccc;
     margin-bottom: 20px;
 }
 
-.section p {
-    color: #aaa;
-    max-width: 800px;
-    line-height: 1.6;
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #fff;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #000;
 }
 </style>
 </head>
@@ -162,75 +109,62 @@ body {
 <body>
 
 <!-- NAV -->
-<div class="nav">
-    <div class="menu-btn" onclick="toggleMenu()">Menu</div>
-    <div class="logo" onclick="reloadSite()">SpaceX</div>
-</div>
-
-<!-- SIDEBAR -->
-<div id="sidebar" class="sidebar">
-    <div class="close" onclick="toggleMenu()">✕ Close</div>
-    <a href="#">Home</a>
-    <a href="#">Vehicles</a>
-    <a href="#">Missions</a>
-    <a href="#">Launches</a>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-left">
-        <h1>Making Life Multiplanetary</h1>
-        <p>
-            SpaceX is developing technologies to enable human life on Mars
-            and beyond through reusable rockets and spacecraft.
-        </p>
+<nav>
+    <div class="logo">SPACEX</div>
+    <div class="menu">
+        <a href="#">Falcon 9</a>
+        <a href="#">Starship</a>
+        <a href="#">Missions</a>
     </div>
+</nav>
 
-    <div class="hero-right">
-        <img src="https://i.pinimg.com/originals/57/d0/4e/57d04ec2fb7c183adfe167887718bede.gif">
-    </div>
-</div>
-
-<!-- VIDEO BACKGROUND SECTION -->
-<div class="video-section">
-
-    <video autoplay muted loop playsinline>
-        <!-- рабочее видео ракеты -->
-        <source src="https://cdn.videvo.net/videvo_files/video/free/2019-06/small_watermarked/190601_04_Space_4k_013_preview.webm" type="video/webm">
-    </video>
-
-    <div class="video-overlay"></div>
-
-    <div class="video-content">
-        <div>
-            <h2>Falcon Launch</h2>
-            <p>
-                Rocket launch footage demonstrating modern reusable launch systems
-                used for satellite deployment and orbital missions.
-            </p>
-        </div>
-    </div>
-
-</div>
-
-<!-- FINAL SECTION -->
+<!-- SECTION 1 -->
 <div class="section">
-    <h2>Future Vision</h2>
-    <p>
-        Starship and next-generation systems aim to make interplanetary travel
-        accessible and sustainable for humanity.
-    </p>
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa');"></div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1>FALCON 9</h1>
+        <p>First orbital class reusable rocket.</p>
+        <a href="#" class="btn">LEARN MORE</a>
+    </div>
 </div>
 
-<script>
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
-}
+<!-- SECTION 2 -->
+<div class="section">
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa');"></div>
+    <div class="overlay"></div>
 
-function reloadSite() {
-    location.reload();
-}
-</script>
+    <div class="content">
+        <h1>STARSHIP</h1>
+        <p>Designed for missions to Mars and beyond.</p>
+        <a href="#" class="btn">VIEW PROJECT</a>
+    </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564');"></div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1>MISSION</h1>
+        <p>Making life multiplanetary.</p>
+        <a href="#" class="btn">EXPLORE</a>
+    </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06');"></div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1>FUTURE</h1>
+        <p>Humanity beyond Earth.</p>
+        <a href="#" class="btn">DISCOVER</a>
+    </div>
+</div>
 
 </body>
 </html>

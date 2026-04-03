@@ -114,6 +114,55 @@ nav {
     }
 }
 </style>
+    /* FOOTER */
+footer {
+    background: #050505;
+    padding: 60px 40px 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col {
+    max-width: 220px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    color: #888;
+    font-size: 14px;
+}
+
+.footer-col a {
+    display: block;
+    color: #888;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
 </head>
 
 <body>
@@ -172,4 +221,41 @@ nav {
 </div>
 
 </body>
+    <footer>
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>SPACEX</h3>
+            <p>Advancing space technology and making life multiplanetary.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Updates</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Projects</h4>
+            <a href="#">Falcon 9</a>
+            <a href="#">Starship</a>
+            <a href="#">Dragon</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="#">Email</a>
+            <a href="#">Support</a>
+            <a href="#">Location</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 SpaceX Style Demo. All rights reserved.
+    </div>
+
+</footer>
 </html>
